@@ -67,10 +67,12 @@ ReMissingMethodCritique >> methodHeader [
 	 ^ ($: split: selector) allButLast
 		ifEmpty: [ selector ]
 		ifNotEmpty: [ :keywords |
-			| index |
+			| index argumentNames |
+			argumentNames := (class subclasses anyOne >> selector) argumentNames.
 			index := 0.
 			keywords inject: '' into: [ :header :keyword |
-				header, keyword, ': arg', (index := index + 1) asString, ' ' ] ]
+				index := index + 1.
+				header, keyword, ': ', (argumentNames at: index), ' ' ] ]
 ]
 
 { #category : #testing }

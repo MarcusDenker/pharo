@@ -183,6 +183,11 @@ ClassDescriptionTest >> testHasSlotNamed [
 	self assert: (Context hasSlotNamed: #method)
 ]
 
+{ #category : #'tests - slots' }
+ClassDescriptionTest >> testInstVarNames [
+	self assert: Point instVarNames equals: #(x y)
+]
+
 { #category : #tests }
 ClassDescriptionTest >> testMethods [
 	self assert: Object methods equals: Object methodDict values

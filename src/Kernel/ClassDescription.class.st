@@ -595,11 +595,12 @@ ClassDescription >> instVarMappingFrom: oldClass [
 			collect: [:instVarName | oldInstVarNames indexOf: instVarName]
 ]
 
-{ #category : #'instance variables' }
+{ #category : #'accessing - instances and variables' }
 ClassDescription >> instVarNames [
-	"Answer an Array of the receiver's instance variable names."
+	"Answer an Array of the names of the receiver's indexed instance variables (IndexedSlot) 
+	Note: the offset in the array via #allInstVarNames is the offset of the IndexedSlot and in sync to be used with #instVarAt:"
 
-	^self slots collect: [ :each | each name ]
+	^self classLayout instVarNames
 ]
 
 { #category : #'accessing - parallel hierarchy' }

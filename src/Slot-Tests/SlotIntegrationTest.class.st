@@ -410,3 +410,18 @@ SlotIntegrationTest >> testSlotsAreInitializedWithDefiningAnonimousClass [
 SlotIntegrationTest >> testSmallIntegerLayout [
 	self assert: (SmallInteger classLayout isKindOf: ImmediateLayout)
 ]
+
+{ #category : #tests }
+SlotIntegrationTest >> testVirtualSlotAndInstVarAt [
+	aClass := self make: [ :builder | builder
+		slots: {#slot1 =>ExampleSlotWithState . #slot2}].
+
+	self assert: (aClass hasSlotNamed: #slot1).
+	self assert: (aClass hasSlotNamed: #slot2).
+	
+	self assert: (aClass lookupVar: #slot1) isVirtual.
+	
+	"instVarNames just returns the indexed slots"
+	self assert: aClass instVarNames equals: #(#slot2).
+
+]

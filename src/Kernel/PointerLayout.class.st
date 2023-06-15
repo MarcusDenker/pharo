@@ -179,7 +179,9 @@ PointerLayout >> initializeInstance: anInstance [
 
 { #category : #accessing }
 PointerLayout >> instVarNames [
-	^ slotScope visibleSlotNames
+	^ slotScope visibleSlots
+		reject: [:each | each isVirtual ] 
+		thenCollect: [ :each | each name ]
 ]
 
 { #category : #copying }

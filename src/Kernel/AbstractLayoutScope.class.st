@@ -141,11 +141,6 @@ AbstractLayoutScope >> resolveSlot: aName ifFound: foundBlock ifNone: exceptionB
 ]
 
 { #category : #accessing }
-AbstractLayoutScope >> visibleSlotNames [
-	^self visibleSlots collect: [:each | each name ]
-]
-
-{ #category : #accessing }
 AbstractLayoutScope >> visibleSlots [
 	self subclassResponsibility
 ]
